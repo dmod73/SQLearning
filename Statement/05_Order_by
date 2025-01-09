@@ -1,0 +1,4 @@
+--Ordenar (Si usamos (DESC) decendemos y si usamos (ASC) es acendiendo)
+SELECT * FROM Users ORDER BY LastName DESC
+--Implementando el WHERE--
+SELECT * FROM Users WHERE age = 24 ORDER BY LastName DESC

@@ -1,0 +1,6 @@
+--Selecciona los que cumplen con la condicion Where--
+SELECT * FROM Users WHERE User_id = 2
+--Implementando el SELECT y el WHERE para presentar los nombres que cumplen con la condicion de tener 24 years--
+SELECT name FROM Users WHERE age = 24
+--Implementando el Distinc 
+SELECT DISTINCT age FROM Users WHERE age = 24
