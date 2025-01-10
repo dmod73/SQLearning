@@ -1,0 +1,4 @@
+--TOP se utiliza para buscar una cantidad en especifico de registro en una tabla
+SELECT TOP 2 * FROM Users;
+--En este ejemplo lo estamos implementando en una consulta mas "compleja"
+SELECT TOP 1 * FROM Users WHERE NOT Name = 'Franshe' OR Age = 25
