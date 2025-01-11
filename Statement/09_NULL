@@ -1,0 +1,6 @@
+--Como buscar los NULL en un registro
+SELECT * FROM Professors WHERE HireDate IS NULL
+--Lo contrario
+SELECT * FROM Professors WHERE HireDate IS NOT NULL
+--Aqui le agrego otra condicion con el AND
+SELECT * FROM Professors WHERE HireDate IS NOT NULL AND ProfessorID = 2

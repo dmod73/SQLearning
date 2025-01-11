@@ -1,0 +1,3 @@
+--Funcionamiento de los ALIAS para trabajar mejor
+ SELECT name AS 'Nombre Usuarios', Mail AS 'Correo de usuarios' FROM Users WHERE Age BETWEEN 20 AND 40
+ 

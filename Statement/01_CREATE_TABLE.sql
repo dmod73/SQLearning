@@ -10,9 +10,16 @@ CREATE TABLE Users (
 );
 
 
-CREATE TABLE UsersClient (
-    UserClient_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    NameClient NCHAR(10) NOT NULL,
-    LastNameClient NCHAR(20),
-    
-)
+USE SQLearning;
+GO
+
+CREATE TABLE Professors (
+    ProfessorID INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    FirstName NVARCHAR(50),
+    LastName NVARCHAR(50),
+    Department NVARCHAR(100),
+    HireDate DATE,
+    Email NVARCHAR(100)
+);
+
+

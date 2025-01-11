@@ -1,0 +1,2 @@
+--Suma todos los valores INT de la columna de AGE
+SELECT SUM(Age) FROM Users
