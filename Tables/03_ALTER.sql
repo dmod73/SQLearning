@@ -25,3 +25,7 @@ ALTER COLUMN Militar BIT;
 --Borrar una columna--
 ALTER TABLE Test2
 DROP COLUMN Militar;
+
+--Para agregar una llave foranea--
+ALTER TABLE Users
+ADD Foreign Key(company_id) References companies(company_id)
