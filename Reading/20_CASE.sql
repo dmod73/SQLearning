@@ -1,5 +1,6 @@
-/*El Case funciona para poder escoger entre diferentes condiciones, si son validas o no y asi poder hacer
-una seleccion/*
+*El Case funciona para poder escoger entre diferentes condiciones, si son validas o no y asi poder hacer
+una seleccion
+
 SELECT *,
        CASE 
            WHEN Age > 30 THEN 'Estas Viejo'

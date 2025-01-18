@@ -1,5 +1,7 @@
---El IN funciona cuando sabemos el registro exacto que estamos buscando, no es KeySensitive, no importan las letras mayusculas o minusculas--
+--El IN funciona cuando sabemos el registro exacto que estamos buscando, no es KeySensitive, no importan las letras mayusculas o minusculas
+
  SELECT * FROM Users WHERE Name IN ('dean')
---Con mas usuarios--
+
+--Con mas usuarios
  SELECT * FROM Users WHERE Name IN ('dean' , 'Franshe')
 
