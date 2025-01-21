@@ -42,3 +42,8 @@ From UsersLenguaje
 Join Users as u ON UsersLenguaje.User_id = u.User_id 
 Join lenguaje as l ON  UsersLenguaje.Lenguaje_id = l.lenguaje_id
 
+Select u.Name, u.LastName, u.Mail, l.lenguajeName , c.companyName
+From UsersLenguaje
+Join Users as u ON UsersLenguaje.User_id = u.User_id 
+Join lenguaje as l ON  UsersLenguaje.Lenguaje_id = l.lenguaje_id
+Join companies as c ON u.company_id = c.company_id;
