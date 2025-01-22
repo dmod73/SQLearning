@@ -8,3 +8,6 @@ WHERE Age >= 25;
 --como ver todas las vistas
 SELECT TABLE_NAME AS ViewName
 FROM INFORMATION_SCHEMA.VIEWS;
+
+--Para borrarlo
+Drop Trigger Users
