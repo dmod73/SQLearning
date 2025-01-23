@@ -1,0 +1,68 @@
+-- Crear la tabla CuentaBancaria
+CREATE TABLE CuentaBancaria (
+    ID INT PRIMARY KEY,
+    Nombre VARCHAR(50),
+    Saldo DECIMAL(10, 2)
+);
+
+-- Insertar datos iniciales
+INSERT INTO CuentaBancaria (ID, Nombre, Saldo)
+VALUES 
+(1, 'Juan', 1000.00),
+(2, 'Maria', 2000.00);
+
+-- Ver datos iniciales
+SELECT * FROM CuentaBancaria;
+
+-- Escenario de concurrencia
+
+-- Transacción 1: Juan retira 500
+-- Ejecutar esta transacción en una conexión separada (simula un proceso paralelo)
+BEGIN TRANSACTION;
+    -- Leer el saldo de Juan
+    SELECT Saldo FROM CuentaBancaria WHERE ID = 1;
+
+    -- Actualizar el saldo restando 500
+    UPDATE CuentaBancaria
+    SET Saldo = Saldo - 500
+    WHERE ID = 1;
+
+    -- Verificar el saldo actualizado
+    SELECT * FROM CuentaBancaria WHERE ID = 1;
+COMMIT;
+
+-- Transacción 2: Aplicar un interés del 10% al saldo de Juan
+-- Ejecutar esta transacción en una conexión separada (simula otro proceso paralelo)
+BEGIN TRANSACTION;
+    -- Leer el saldo de Juan
+    SELECT Saldo FROM CuentaBancaria WHERE ID = 1;
+
+    -- Actualizar el saldo aplicando el interés
+    UPDATE CuentaBancaria
+    SET Saldo = Saldo * 1.1
+    WHERE ID = 1;
+
+    -- Verificar el saldo actualizado
+    SELECT * FROM CuentaBancaria WHERE ID = 1;
+COMMIT;
+
+-- Solución con control de concurrencia
+-- Utilizando el nivel de aislamiento SERIALIZABLE
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+
+-- Transacción 1: Retiro de 500 (Bloqueará T2 hasta que T1 termine)
+BEGIN TRANSACTION;
+    SELECT Saldo FROM CuentaBancaria WHERE ID = 1;
+    UPDATE CuentaBancaria SET Saldo = Saldo - 500 WHERE ID = 1;
+    SELECT * FROM CuentaBancaria WHERE ID = 1;
+COMMIT;
+
+-- Transacción 2: Aplicar interés del 10%
+BEGIN TRANSACTION;
+    SELECT Saldo FROM CuentaBancaria WHERE ID = 1;
+    UPDATE CuentaBancaria SET Saldo = Saldo * 1.1 WHERE ID = 1;
+    SELECT * FROM CuentaBancaria WHERE ID = 1;
+COMMIT;
+
+-- Resultado final después del control de concurrencia
+SELECT * FROM CuentaBancaria;
